@@ -87,15 +87,38 @@ namespace SunSD
             });
 
             // configure DI for application services
+            // configure DI for application services
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IProductTypeService, ProductTypesService>();
             services.AddScoped<IProductCategoryService, ProductCategoryService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IInventoryItemCategoryService, InventoryItemCategoryService>();
+            services.AddScoped<IPriceService, PriceService>();
+            services.AddScoped<IAdminService, AdminService>();
+            services.AddScoped<IShoppingCartViewModelService, ShoppingCartViewModelService>();
+            services.AddScoped<ICustomerService, CutomerService>();
+            services.AddScoped<IGoodNotesService, GoodNotesService>();
+            services.AddScoped<IInventoryService, InventoryService>();
+            services.AddScoped<IInventoryItemService, InventoryItemService>();
+            services.AddScoped<IInventoryItemTypeService, InventoryItemTypeService>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IOrderLineService, OrderLinesService>();
+            services.AddScoped<IProductInfoService, ProductInfoService>();
+            services.AddScoped<ISupplierService, SuppierService>();
+            services.AddScoped<IProductOptionService, ProductOptionService>();
+            services.AddScoped<IProductSelectedForOrderService, ProductSelectedForOrderService>();
+            services.AddScoped<IPurchaseInvoiceService, PurchaseInvoiceService>();
+            services.AddScoped<IPurchaseOrderService, PurchaseOrderService>();
+            services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<ISalesInvoiceService, SalesInvoiceService>();
+            services.AddScoped<ISalesManagerService, SalesManagerService>();
+            services.AddScoped<ISalesOrderService, SalesOrderService>();
+            services.AddScoped<ISalesPersonService, SalesPersonService>();
+            services.AddTransient<DbInitializer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, DbInitializer Seeder)
         {
             if (env.IsDevelopment())
             {
@@ -115,6 +138,7 @@ namespace SunSD
             app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseMvc();
+            Seeder.Seed().Wait();
         }
     }
 }
