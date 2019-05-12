@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ServiceLayers.Properties {
+namespace ServiceLayer.Properties {
     using System;
     
     
@@ -19,7 +19,7 @@ namespace ServiceLayers.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -39,7 +39,7 @@ namespace ServiceLayers.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ServiceLayers.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ServiceLayer.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -74,8 +74,7 @@ namespace ServiceLayers.Properties {
         ///  &lt;/appender&gt;
         ///  &lt;appender name=&quot;file&quot; type=&quot;log4net.Appender.RollingFileAppender&quot;&gt;
         ///    &lt;file value=&quot;myapp.log&quot; /&gt;
-        ///    &lt;!--&lt;file value=&quot;${LOCALAPPDATA}\Temp\ApiLog\ApiLog.log&quot; /&gt;--&gt;
-        ///   [rest of string was truncated]&quot;;.
+        ///    &lt;!--&lt;file value=&quot;${LOCALAPPDATA}\Temp\ApiLog\ApiLog. [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string log4net {
             get {
