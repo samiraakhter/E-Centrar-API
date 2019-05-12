@@ -148,7 +148,7 @@ namespace SunSD.Controllers
         }
 
         //GET Delete Action method
-        [HttpGet("Delete")]
+        [HttpDelete("Delete")]
         public void Delete(int id)
         {
             _productService.Delete(id);
