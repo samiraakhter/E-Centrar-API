@@ -31,7 +31,7 @@ namespace ServiceLayers
         {
             var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
             XmlDocument doc = new XmlDocument();
-            doc.LoadXml(Properties.Resources.log4net);
+            doc.LoadXml(ServiceLayer.Properties.Resources.log4net);
             XmlConfigurator.Configure(logRepository, doc.DocumentElement);
         }
 

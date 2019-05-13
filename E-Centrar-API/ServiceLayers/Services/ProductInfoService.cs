@@ -22,8 +22,8 @@ namespace ServiceLayers.Services
     public class ProductInfoService : IProductInfoService
     {
         private readonly ApplicationDbContext _db;
-        // [BindProperty]
-        // public ProductViewModel ProductsVM { get; set; }
+         [BindProperty]
+         public ProductViewModel ProductsVM { get; set; }
 
         public ProductInfoService(ApplicationDbContext db)
         {

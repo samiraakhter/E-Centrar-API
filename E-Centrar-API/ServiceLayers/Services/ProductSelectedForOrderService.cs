@@ -21,7 +21,7 @@ namespace ServiceLayers.Services
     public class ProductSelectedForOrderService: IProductSelectedForOrderService
     {
         private readonly ApplicationDbContext _db;
-        [BindProperty]
+       [BindProperty]
         public ProductViewModel ProductsVM { get; set; }
 
         public ProductSelectedForOrderService(ApplicationDbContext db)
