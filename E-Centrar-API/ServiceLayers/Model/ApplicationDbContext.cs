@@ -12,6 +12,7 @@ namespace ServiceLayers.Model
 
         }
         public DbSet<User> User { get; set; }
+        public DbSet<Data> Data { get; set; }
         public DbSet<Admin> Admin { get; set; }
         public DbSet<Customer> Customer { get; set; }
         public DbSet<GoodsNotes> GoodsNotes { get; set; }
