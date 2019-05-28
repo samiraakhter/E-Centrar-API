@@ -21,11 +21,11 @@ namespace ServiceLayers.Model
         public string Status { get; set; }
         public double Revenue { get; set; }
 
-        [Display(Name = "Sales Manager")]
-        public int SalesManagerIdFk { get; set; }
+        //[Display(Name = "Sales Manager")]
+        //public int SalesManagerIdFk { get; set; }
 
-        [ForeignKey("SalesManagerIdFk")]
-        public virtual User User { get; set; }
+        //[ForeignKey("SalesManagerIdFk")]
+        //public virtual User User { get; set; }
        
         public string SalesPersonAssign { get; set; }
 

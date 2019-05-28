@@ -89,8 +89,6 @@ namespace ServiceLayers.Services
             SalesInvoices.Revenue = SalesInvoiceParam.Revenue;
             SalesInvoices.SalesInvoiceDate = SalesInvoiceParam.SalesInvoiceDate;
             SalesInvoices.SalesInvoiceNo = SalesInvoiceParam.SalesInvoiceNo;
-            SalesInvoices.SalesManagerIdFk = SalesInvoiceParam.SalesManagerIdFk;
-            SalesInvoices.SalesOrdernoFk = SalesInvoiceParam.SalesOrdernoFk;
             SalesInvoices.ShippingAndHandling = SalesInvoiceParam.ShippingAndHandling;
             SalesInvoices.SubTotal = SalesInvoiceParam.SubTotal;
             SalesInvoices.Tax = SalesInvoiceParam.Total;

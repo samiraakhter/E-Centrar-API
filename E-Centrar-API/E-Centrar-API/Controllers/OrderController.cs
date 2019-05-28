@@ -44,7 +44,6 @@ namespace SunSD.Controllers
             order.IsConfirmed = orderDTO.IsConfirmed;
             order.OrderDate = orderDTO.OrderDate;
             order.ProductIdFk = orderDTO.ProductIdFk;
-            order.SalesOrderIdFk = orderDTO.SalesOrderIdFk;
             
 
             var orderEntity = _orderService.Create(order);

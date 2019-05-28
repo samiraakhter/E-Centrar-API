@@ -10,7 +10,7 @@ using ServiceLayers.DTOs;
 using ServiceLayers.Services;
 using ServiceLayers.Model;
 
-namespace SunSD.Controllers
+namespace ECentrarApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

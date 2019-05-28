@@ -21,7 +21,7 @@ using ServiceLayers.Model;
 using ServiceLayers.Services;
 using Newtonsoft.Json.Serialization;
 
-namespace SunSD
+namespace ECentrarApi
 {
     public class Startup
     {
@@ -39,7 +39,7 @@ namespace SunSD
             services.AddCors();
 
             //add db context
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("ECentrarApi")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
@@ -107,7 +107,6 @@ namespace SunSD
             services.AddScoped<IProductInfoService, ProductInfoService>();
             services.AddScoped<ISupplierService, SuppierService>();
             services.AddScoped<IProductOptionService, ProductOptionService>();
-            services.AddScoped<IProductSelectedForOrderService, ProductSelectedForOrderService>();
             services.AddScoped<IPurchaseInvoiceService, PurchaseInvoiceService>();
             services.AddScoped<IPurchaseOrderService, PurchaseOrderService>();
             services.AddScoped<IRoleService, RoleService>();

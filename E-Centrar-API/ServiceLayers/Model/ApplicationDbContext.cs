@@ -27,7 +27,6 @@ namespace ServiceLayers.Model
         public DbSet<ProductCategory> ProductCategory { get; set; }
         public DbSet<ProductInfo> ProductInfo { get; set; }
         public DbSet<ProductOption> ProductOption { get; set; }
-        public DbSet<ProductSelectedForOrder> ProductSelectedForOrder { get; set; }
         public DbSet<ProductType> ProductType { get; set; }
         public DbSet<PurchaseInvoice> PurchaseInvoice { get; set; }
         public DbSet<PurchaseOrder> PurchaseOrder { get; set; }

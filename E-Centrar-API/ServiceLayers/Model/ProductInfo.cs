@@ -22,18 +22,18 @@ namespace ServiceLayers.Model
         public bool CanBeExpensed { get; set; }
         public bool CanBePurchased { get; set; }
 
-        [Display(Name = "Product Type")]
-        public int ProductTypeIdFk { get; set; }
-
-        [ForeignKey("ProductTypeIdFk")]
-        public virtual ProductType ProductType { get; set; }
+        //[Display(Name = "Product Type")]
         //public int ProductTypeIdFk { get; set; }
 
-        [Display(Name = "Product Category")]
-        public int ProductCategoryIdFk { get; set; }
+        //[ForeignKey("ProductTypeIdFk")]
+        //public virtual ProductType ProductType { get; set; }
+        ////public int ProductTypeIdFk { get; set; }
 
-        [ForeignKey("ProductCategoryIdFk")]
-        public virtual ProductCategory ProductCategory { get; set; }
+        //[Display(Name = "Product Category")]
+        //public int ProductCategoryIdFk { get; set; }
+
+        //[ForeignKey("ProductCategoryIdFk")]
+        //public virtual ProductCategory ProductCategory { get; set; }
 
         //public int ProductCategoryIdFk { get; set; }
         public string ModelSku { get; set; }

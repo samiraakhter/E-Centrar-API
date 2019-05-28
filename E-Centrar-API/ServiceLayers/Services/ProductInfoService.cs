@@ -22,8 +22,8 @@ namespace ServiceLayers.Services
     public class ProductInfoService : IProductInfoService
     {
         private readonly ApplicationDbContext _db;
-         [BindProperty]
-         public ProductViewModel ProductsVM { get; set; }
+        // [BindProperty]
+        // public ProductViewModel ProductsVM { get; set; }
 
         public ProductInfoService(ApplicationDbContext db)
         {
@@ -48,9 +48,7 @@ namespace ServiceLayers.Services
             productinfo.CanBePurchased = true;
             productinfo.CanBeSold = true;
             productinfo.Ean = "aaa";
-            productinfo.ProductCategoryIdFk = 3;
             productinfo.ProductImage = "working";
-            productinfo.ProductTypeIdFk = 4;
             productinfo.IsActive = true;
             productinfo.ModelSku = "10";
             productinfo.ProductName = "juice";
@@ -93,9 +91,7 @@ namespace ServiceLayers.Services
             productinfo.CanBePurchased = productinfoParam.CanBePurchased;
             productinfo.CanBeSold = productinfoParam.CanBeSold;
             productinfo.Ean = productinfoParam.Ean;
-            productinfo.ProductCategoryIdFk = productinfoParam.ProductCategoryIdFk;
             productinfo.ProductImage = productinfoParam.ProductImage;
-            productinfo.ProductTypeIdFk = productinfoParam.ProductTypeIdFk;
             productinfo.IsActive = productinfoParam.IsActive;
             productinfo.ModelSku = productinfoParam.ModelSku;
             productinfo.ProductName = productinfoParam.ProductName;

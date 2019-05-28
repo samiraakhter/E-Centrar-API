@@ -24,7 +24,7 @@ namespace ServiceLayers.Services
     {
         private readonly ApplicationDbContext _db;
 
-       // [BindProperty]
+        [BindProperty]
         public ProductViewModel ProductsVM { get; set; }
 
         public ProductService(ApplicationDbContext db)

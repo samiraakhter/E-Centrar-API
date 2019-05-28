@@ -55,8 +55,7 @@ namespace SunSD.Controllers
             sales.Revenue = salesDTO.Revenue;
             sales.SalesInvoiceDate = salesDTO.SalesInvoiceDate;
             sales.SalesInvoiceNo = salesDTO.SalesInvoiceNo;
-            sales.SalesManagerIdFk = salesDTO.SalesManagerIdFk;
-            sales.SalesOrdernoFk = salesDTO.SalesOrdernoFk;
+          //  sales.SalesOrdernoFk = salesDTO.SalesOrdernoFk;
             sales.ShippingAndHandling = salesDTO.ShippingAndHandling;
             sales.SubTotal = salesDTO.SubTotal;
             sales.Tax = salesDTO.Total;

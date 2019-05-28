@@ -19,7 +19,6 @@ namespace ServiceLayers.Model
 
         public void Seed()
         {
-
             // Look for any Product.
             if (!_db.ProductOption.Any())
             {

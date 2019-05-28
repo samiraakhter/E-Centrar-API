@@ -10,7 +10,7 @@ using ServiceLayers.Model;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 
-namespace SunSD.Controllers
+namespace ECentrarApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

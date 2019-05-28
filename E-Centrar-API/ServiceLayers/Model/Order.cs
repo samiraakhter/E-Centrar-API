@@ -31,11 +31,11 @@ namespace ServiceLayers.Model
         [ForeignKey("ProductIdFk")]
         public virtual Product Product { get; set; }
 
-        [Display(Name = "SalesOrder")]
-        public int SalesOrderIdFk { get; set; }
+        //[Display(Name = "SalesOrder")]
+        //public int SalesOrderIdFk { get; set; }
 
-        [ForeignKey("SalesOrderIdFk")]
-        public virtual SalesOrder SalesOrder { get; set; }
+        //[ForeignKey("SalesOrderIdFk")]
+        //public virtual SalesOrder SalesOrder { get; set; }
        
         public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }

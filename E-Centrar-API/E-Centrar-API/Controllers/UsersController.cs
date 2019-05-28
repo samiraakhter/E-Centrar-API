@@ -12,7 +12,7 @@ using ServiceLayers.Helpers;
 using ServiceLayers.Model;
 using ServiceLayers.Services;
 
-namespace SunSD.Controllers
+namespace ECentrarApi.Controllers
 {
     [Route("api/[controller]")]
     [Authorize]

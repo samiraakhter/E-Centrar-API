@@ -35,6 +35,14 @@ namespace SunSD.Controllers
             _db = db;
         }
 
+        //GetAll
+        [HttpGet("GetAll")]
+        public IActionResult Get()
+        {
+            var products = _productService.GetAll();
+            return Ok(products);
+        }
+
         [HttpGet]
         [Produces("application/json")]
         public JsonResult Get([DataSourceRequest]DataSourceRequest request)

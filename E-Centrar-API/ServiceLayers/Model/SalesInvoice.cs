@@ -11,20 +11,20 @@ namespace ServiceLayers.Model
         public string SalesInvoiceNo { get; set; }
         public DateTime SalesInvoiceDate { get; set; }
 
-        [Display(Name = "Sales Manager")]
-        public int SalesManagerIdFk { get; set; }
+        //[Display(Name = "Sales Manager")]
+        //public int SalesManagerIdFk { get; set; }
 
-        [ForeignKey("SalesManagerIdFk")]
-        public virtual User User { get; set; }
+        //[ForeignKey("SalesManagerIdFk")]
+        //public virtual User User { get; set; }
        // public int? SalesManagerIdFk { get; set; }
         
         public string SalesManagerAssign { get; set; }
 
-        [Display(Name = "Sales Order")]
-        public int SalesOrdernoFk { get; set; }
+        //[Display(Name = "Sales Order")]
+        //public int SalesOrdernoFk { get; set; }
 
-        [ForeignKey("SalesOrdernoFk")]
-        public virtual SalesOrder SalesOrder { get; set; }
+        //[ForeignKey("SalesOrdernoFk")]
+        //public virtual SalesOrder SalesOrder { get; set; }
        // public int? SalesOrdernoFk { get; set; }
         public string PaymentTerm { get; set; }
 
