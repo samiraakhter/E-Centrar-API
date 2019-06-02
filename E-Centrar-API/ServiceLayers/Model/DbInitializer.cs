@@ -167,8 +167,8 @@ namespace ServiceLayers.Model
                         product1.ProductImage = @"\images\ProductImage\default_image.png";
                         product1.Sku = "“Test0001";
                         product1.Variants = "“Test0001_s";
-                        product1.ProductTypeIdFk = 5;
-                        product1.ProductCategoryIdFk = 4;
+                        product1.ProductTypeIdFk = 1;
+                        product1.ProductCategoryIdFk = 1;
                         product1.OnHand = true;
                         product1.Fullfilled = false;
                         product1.Instock = true;
@@ -183,8 +183,8 @@ namespace ServiceLayers.Model
                         product2.ProductImage = @"\images\ProductImage\default_image.png";
                         product2.Sku = "“Test0001";
                         product2.Variants = "“Test0001_m";
-                        product2.ProductTypeIdFk = 5;
-                        product2.ProductCategoryIdFk = 4;
+                        product2.ProductTypeIdFk = 1;
+                        product2.ProductCategoryIdFk = 1;
                         product2.OnHand = true;
                         product2.Fullfilled = false;
                         product2.Instock = true;
@@ -200,8 +200,8 @@ namespace ServiceLayers.Model
                         product3.ProductImage = @"\images\ProductImage\default_image.png";
                         product3.Sku = "“Test0002";
                         product3.Variants = "“Test0002_m";
-                        product3.ProductTypeIdFk = 5;
-                        product3.ProductCategoryIdFk = 4;
+                        product3.ProductTypeIdFk = 1;
+                        product3.ProductCategoryIdFk = 1;
                         product3.OnHand = true;
                         product3.Fullfilled = false;
                         product3.Instock = true;

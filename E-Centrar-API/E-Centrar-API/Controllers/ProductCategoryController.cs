@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +36,13 @@ namespace ECentrarApi.Controllers
             var productCategory = _productCategoryService.GetAll();
             return Ok(productCategory);
         }
+
+       // [HttpGet]
+       // [Produces("application/json")]
+       //public JsonResult Get([DataSourceRequest]DataSourceRequest request)
+       // {
+       //     var productCategory = _productCategoryService.GetAll(
+       // }
 
         //POST Create Action Method
         [HttpPost("Create")]

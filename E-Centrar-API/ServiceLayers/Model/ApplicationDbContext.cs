@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ServiceLayer.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,6 +12,7 @@ namespace ServiceLayers.Model
         {
 
         }
+        public DbSet<Route> Route { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<Data> Data { get; set; }
         public DbSet<Admin> Admin { get; set; }

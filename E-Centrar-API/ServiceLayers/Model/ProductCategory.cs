@@ -5,11 +5,11 @@ namespace ServiceLayers.Model
 {
     public class ProductCategory
     {
-        public ProductCategory()
-        {
-            Product = new HashSet<Product>();
-            ProductInfo = new HashSet<ProductInfo>();
-        }
+        //public ProductCategory()
+        //{
+        //    Product = new HashSet<Product>();
+        //    ProductInfo = new HashSet<ProductInfo>();
+        //}
 
         public int Id { get; set; }
         public string ProductCategoryName { get; set; }
@@ -19,7 +19,7 @@ namespace ServiceLayers.Model
         public DateTime? UpdatedDate { get; set; }
         public string UpdatedBy { get; set; }
 
-        public ICollection<Product> Product { get; set; }
-        public ICollection<ProductInfo> ProductInfo { get; set; }
+        //public ICollection<Product> Product { get; set; }
+        //public ICollection<ProductInfo> ProductInfo { get; set; }
     }
 }

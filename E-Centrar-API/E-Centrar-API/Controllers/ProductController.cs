@@ -13,6 +13,8 @@ using System.IO;
 using ServiceLayers.Utility;
 using ServiceLayers;
 using ServiceLayers.Model.ViewModel;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace SunSD.Controllers
 {
@@ -47,8 +49,9 @@ namespace SunSD.Controllers
         [Produces("application/json")]
         public JsonResult Get([DataSourceRequest]DataSourceRequest request)
         {
-            var product = _productService.GetAll();
-            return Json(product.ToDataSourceResult(request));
+
+            var products = _db.Product.Include(m => m.ProductCategory).Include(m => m.ProductType).ToList();
+            return Json(products.ToDataSourceResult(request));
         }
 
         //POST Action Method for picture

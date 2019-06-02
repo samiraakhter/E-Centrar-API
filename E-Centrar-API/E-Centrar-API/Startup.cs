@@ -136,7 +136,8 @@ namespace ECentrarApi
             {
                 app.UseHsts();
             }
-
+            //web root folder for static files
+            app.UseStaticFiles();
             //enable cors
             app.UseCors(builder => builder
                 .AllowAnyOrigin()

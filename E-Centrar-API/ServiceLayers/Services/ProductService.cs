@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ServiceLayers.Model;
 using ServiceLayers.Model.ViewModel;
 using ServiceLayers.Utility;
@@ -34,7 +35,7 @@ namespace ServiceLayers.Services
 
         public IEnumerable<Product> GetAll()
         {
-
+          //  var products = _db.Product.Include(m => m.ProductType).Include(m => m.ProductCategory);
             return _db.Product;
         }
 
@@ -83,6 +84,7 @@ namespace ServiceLayers.Services
             product.ProductName = productParam.ProductName;
             product.Fullfilled = productParam.Fullfilled;
             product.Instock = productParam.Instock;
+            product.Variants = productParam.Variants;
             product.IsActive = productParam.IsActive;
             product.OnHand = productParam.OnHand;
             product.ProductCategoryIdFk = productParam.ProductCategoryIdFk;
