@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using ServiceLayers;
 using ServiceLayers.DTOs;
 using ServiceLayers.Helpers;
 using ServiceLayers.Model;
@@ -20,11 +21,13 @@ namespace ECentrarApi.Controllers
     //[Route("[controller]")]
     public class UsersController : ControllerBase
     {
+        private ApplicationDbContext _context;
         private IUserService _userService;
         private readonly IMapper _mapper;
         private readonly AppSettings _appSettings;
-        public UsersController(IUserService userService, IMapper mapper, IOptions<AppSettings> appSettings)
+        public UsersController(ApplicationDbContext context,IUserService userService, IMapper mapper, IOptions<AppSettings> appSettings)
         {
+            _context = context;
             _userService = userService;
             _mapper = mapper;
             _appSettings = appSettings.Value;
@@ -45,7 +48,7 @@ namespace ECentrarApi.Controllers
 
             return Ok(user);
         }
-
+        
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -54,17 +57,50 @@ namespace ECentrarApi.Controllers
             var users = _userService.GetAll();
             return Ok(users);
         }
+
+        [AllowAnonymous]
+        [HttpGet("GetCount")]
+        public IActionResult GetCount()
+        {
+            var count = _context.User.Count();
+
+            return Ok(count);
+        }
+
+        [HttpGet("GetSalesman")]
+        public IActionResult GetSalesManager()
+        {
+            var user = User.Identity.Name;
+
+            var users = _userService.GetSalesManager();
+            return Ok(users);
+        }
+
         [AllowAnonymous]
         [HttpPost("Create")]
         public IActionResult Create([FromBody]UserDTO userParam)
         {
-            User user = new User();
-            user.FirstName = userParam.FirstName;
-            user.LastName = userParam.LastName;
-            user.Username = userParam.Username;
-            var userEntity = _userService.Create(user, userParam.Password);
-            var userDto = _mapper.Map<UserDTO>(userEntity);
-            return Ok(user);
+
+            if (_context.User.Count() == 0 || User.Identity.IsAuthenticated)
+            {
+                User user = new User();
+                user.FirstName = userParam.FirstName;
+                user.LastName = userParam.LastName;
+                user.Username = userParam.Username;
+                user.ContactNo = userParam.ContactNo;
+                user.Email = userParam.Email;
+                user.ResidentialAddress = userParam.ResidentialAddress;
+                user.RoleId = userParam.RoleId;
+
+                var userEntity = _userService.Create(user, userParam.Password);
+                var userDto = _mapper.Map<UserDTO>(userEntity);
+                return Ok(user);
+            }
+            else
+            {
+                return BadRequest(new { message = "You are not allowed to create this user" });
+            }
         }
+
     }
 }

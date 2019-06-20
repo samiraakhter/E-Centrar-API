@@ -34,7 +34,7 @@ namespace ECentrarApi.Controllers
 
         //POST Create Action Method
         [HttpPost("Create")]
-        [AllowAnonymous]
+        [Authorize]
         public IActionResult Create([FromBody] CustomerDTO customerDTO)
         {
             Customer customer = new Customer();

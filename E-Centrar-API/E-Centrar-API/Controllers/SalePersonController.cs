@@ -38,6 +38,7 @@ namespace ECentrarApi.Controllers
         public IActionResult Create([FromBody]SalesPersonDTO salespersonDTO)
         {
             SalesPerson salesperson = new SalesPerson();
+            salesperson.SalesPersonId = Guid.NewGuid();
             salesperson.FirstName = salespersonDTO.FirstName;
             salesperson.Address = salespersonDTO.Address;
             salesperson.IsActive = salespersonDTO.IsActive;

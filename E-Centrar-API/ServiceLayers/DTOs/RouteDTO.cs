@@ -1,16 +1,13 @@
-﻿using ServiceLayers.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace ServiceLayer.Model
+namespace ServiceLayer.DTOs
 {
-    public class Route
+    public class RouteDTO
     {
         public int Id { get; set; }
-        public string RouteName{ get; set; }
+        public string RouteName { get; set; }
         public float Latitude { get; set; }
         public float Longitude { get; set; }
         public DateTime DateOfVisit { get; set; }
@@ -20,11 +17,7 @@ namespace ServiceLayer.Model
         public string UpdatedBy { get; set; }
         public DateTime UpdatedDate { get; set; }
         public bool isActive { get; set; }
-        [Display(Name = "SalesPerson")]
         public int SalesPerson { get; set; }
-
-        [ForeignKey("SalesPerson")]
-        public virtual SalesPerson GetSalesPerson { get; set; }
 
     }
 }

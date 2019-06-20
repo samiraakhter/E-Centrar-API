@@ -16,12 +16,12 @@ namespace ServiceLayers.DTOs
         public string Token { get; set; }
         public int RoleId { get; set; }
         public string ContactNo { get; set; }
-        public string EmailAddress { get; set; }
+        public string Email { get; set; }
         public string ResidentialAddress { get; set; }
-        public int IsActive { get; set; }
+        public bool IsActive { get; set; }
         public string CreatedBy { get; set; }
-        public string UpdatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
+        public string UpdatedBy { get; set; }
         public DateTime UpdatedDate { get; set; }
     }
 }

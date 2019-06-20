@@ -20,6 +20,7 @@ using ServiceLayers.Helpers;
 using ServiceLayers.Model;
 using ServiceLayers.Services;
 using Newtonsoft.Json.Serialization;
+using ServiceLayer.Services;
 
 namespace ECentrarApi
 {
@@ -90,6 +91,7 @@ namespace ECentrarApi
             // configure DI for application services
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IRouteService, RouteService>();
             services.AddScoped<IProductTypeService, ProductTypesService>();
             services.AddScoped<IProductCategoryService, ProductCategoryService>();
             services.AddScoped<IProductService, ProductService>();
