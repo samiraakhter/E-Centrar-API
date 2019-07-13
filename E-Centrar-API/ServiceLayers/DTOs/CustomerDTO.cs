@@ -22,5 +22,10 @@ namespace ServiceLayers.DTOs
         public DateTime? UpdatedDate { get; set; }
         public string UpdatedBy { get; set; }
         public string PaymentMethod { get; set; }
+        public int FK_RouteId { get; set; }
+        public float Latitude { get; set; }
+        public float Longitude { get; set; }
+
+
     }
 }

@@ -20,53 +20,53 @@ namespace ServiceLayers.Model
         public void Seed()
         {
             // Look for any Product.
-            if (!_db.ProductOption.Any())
-            {
-                IProductOptionService _productOptionService = new ProductOptionService(_db);
+            //if (!_db.ProductOption.Any())
+            //{
+            //    IProductOptionService _productOptionService = new ProductOptionService(_db);
 
-                List<ProductOption> productOptions = new List<ProductOption>();
-                {
-                    ProductOption productOption1 = new ProductOption();
-                    {
-                        productOption1.CreatedBy = "Sameera";
-                        productOption1.CreatedDate = DateTime.Now;
-                        productOption1.Name = "Size";
-                        productOption1.Option = "Small";
-                        productOption1.IsActive = true;
-                        _productOptionService.Create(productOption1);
-                    }
+            //    List<ProductOption> productOptions = new List<ProductOption>();
+            //    {
+            //        ProductOption productOption1 = new ProductOption();
+            //        {
+            //            productOption1.CreatedBy = "Sameera";
+            //            productOption1.CreatedDate = DateTime.Now;
+            //            productOption1.Name = "Size";
+            //            productOption1.Option = "Small";
+            //            productOption1.IsActive = true;
+            //            _productOptionService.Create(productOption1);
+            //        }
 
-                    ProductOption productOption2 = new ProductOption();
-                    {
-                        productOption2.CreatedBy = "Sameera";
-                        productOption2.CreatedDate = DateTime.Now;
-                        productOption2.Name = "Size";
-                        productOption2.Option = "X-Small";
-                        productOption2.IsActive = true;
-                        _productOptionService.Create(productOption2);
-                    }
+            //        ProductOption productOption2 = new ProductOption();
+            //        {
+            //            productOption2.CreatedBy = "Sameera";
+            //            productOption2.CreatedDate = DateTime.Now;
+            //            productOption2.Name = "Size";
+            //            productOption2.Option = "X-Small";
+            //            productOption2.IsActive = true;
+            //            _productOptionService.Create(productOption2);
+            //        }
 
-                    ProductOption productOption3 = new ProductOption();
-                    {
-                        productOption3.CreatedBy = "Sameera";
-                        productOption3.CreatedDate = DateTime.Now;
-                        productOption3.Name = "Size";
-                        productOption3.Option = "Medium";
-                        productOption3.IsActive = true;
-                        _productOptionService.Create(productOption3);
-                    }
+            //        ProductOption productOption3 = new ProductOption();
+            //        {
+            //            productOption3.CreatedBy = "Sameera";
+            //            productOption3.CreatedDate = DateTime.Now;
+            //            productOption3.Name = "Size";
+            //            productOption3.Option = "Medium";
+            //            productOption3.IsActive = true;
+            //            _productOptionService.Create(productOption3);
+            //        }
 
-                    ProductOption productOption4 = new ProductOption();
-                    {
-                        productOption4.CreatedBy = "Sameera";
-                        productOption4.CreatedDate = DateTime.Now;
-                        productOption4.Name = "Size";
-                        productOption4.Option = "Large";
-                        productOption4.IsActive = true;
-                        _productOptionService.Create(productOption4);
-                    }
-                }
-            }
+            //        ProductOption productOption4 = new ProductOption();
+            //        {
+            //            productOption4.CreatedBy = "Sameera";
+            //            productOption4.CreatedDate = DateTime.Now;
+            //            productOption4.Name = "Size";
+            //            productOption4.Option = "Large";
+            //            productOption4.IsActive = true;
+            //            _productOptionService.Create(productOption4);
+            //        }
+            //    }
+            //}
 
             if (!_db.ProductCategory.Any())
             {
@@ -171,7 +171,7 @@ namespace ServiceLayers.Model
                         product1.ProductCategoryIdFk = 1;
                         product1.OnHand = true;
                         product1.Fullfilled = false;
-                        product1.Instock = true;
+                        product1.Instock = 10;
                         product1.CreatedBy = "Sameera";
                         product1.CreatedDate = DateTime.Now;
                         product1.IsActive = true;
@@ -187,7 +187,7 @@ namespace ServiceLayers.Model
                         product2.ProductCategoryIdFk = 1;
                         product2.OnHand = true;
                         product2.Fullfilled = false;
-                        product2.Instock = true;
+                        product2.Instock = 10;
                         product2.CreatedBy = "Sameera";
                         product2.CreatedDate = DateTime.Now;
                         product2.IsActive = true;
@@ -204,7 +204,7 @@ namespace ServiceLayers.Model
                         product3.ProductCategoryIdFk = 1;
                         product3.OnHand = true;
                         product3.Fullfilled = false;
-                        product3.Instock = true;
+                        product3.Instock = 10;
                         product3.CreatedBy = "Sameera";
                         product3.CreatedDate = DateTime.Now;
                         product3.IsActive = true;

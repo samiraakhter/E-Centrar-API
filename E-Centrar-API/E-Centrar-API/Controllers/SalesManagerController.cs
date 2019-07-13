@@ -41,7 +41,7 @@ namespace ECentrarApi.Controllers
             salesManager.FirstName = salesmanagerDTO.FirstName;
             //productType.CreatedBy = User.Identity.Name;
             var managerEntity = _salesmanagerService.Create(salesManager);
-            var sales = _mapper.Map<PurchaseOrderDTO>(managerEntity);
+            //var sales = _mapper.Map<PurchaseOrderDTO>(managerEntity);
 
 
             return Ok(salesManager);

@@ -18,6 +18,7 @@ namespace ServiceLayers.Services
         UserDTO Authenticate(string username, string password);
         IEnumerable<User> GetAll();
         IEnumerable<User> GetSalesManager();
+        IEnumerable<User> GetSalesMan();
         User GetById(int id);
         User Create(User user, string password);
         void Update(User user, string password = null);
@@ -126,6 +127,14 @@ namespace ServiceLayers.Services
             var usersInRole = _context.User.Where(r => r.RoleId == role.Id).ToList();
             return usersInRole;
         }
+
+        public IEnumerable<User> GetSalesMan()
+        {
+            var role = _context.Role.SingleOrDefault(m => m.RoleName == "SalesPerson");
+            var usersInRole = _context.User.Where(r => r.RoleId == role.Id).ToList();
+            return usersInRole;
+        }
+
         public User GetById(int id)
         {
             return _context.User.Find(id);

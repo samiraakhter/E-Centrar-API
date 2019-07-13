@@ -42,7 +42,6 @@ namespace ServiceLayers.Services
         {
             customer.CreatedBy = "Admin";
             customer.CreatedDate = DateTime.Now;
-            customer.Address = "hsaasja";
             _db.Customer.Add(customer);
             _db.SaveChanges();
             return customer;
@@ -83,7 +82,9 @@ namespace ServiceLayers.Services
             customer.FK_SalesManager = customerParam.FK_SalesManager;
             customer.EnterpriseName = customerParam.EnterpriseName;
             customer.Address = customerParam.Address;
-            
+            customer.Longitude = customerParam.Longitude;
+            customer.Latitude = customerParam.Latitude;
+            customer.FK_RouteId = customerParam.FK_RouteId;
             customer.UpdatedBy = "Admin";
             customer.UpdatedDate = DateTime.Now;
             

@@ -38,7 +38,7 @@ namespace ServiceLayers.Services
         {
             inventory.CreatedBy = "Admin";
             inventory.CreatedDate = DateTime.Now;
-            inventory.IsActive = true;
+            
             _db.Inventory.Add(inventory);
             _db.SaveChanges();
             return inventory;
@@ -72,9 +72,11 @@ namespace ServiceLayers.Services
             inventory.UpdatedDate = DateTime.Now;
 
             inventory.Amount = inventoryParam.Amount;
+            inventory.ProductFk = inventoryParam.ProductFk;
+           // inventory.Product = inventoryParam.Product;
             inventory.DefaultLocation = inventoryParam.DefaultLocation;
-            inventory.InventoryItemFk = inventoryParam.InventoryItemFk;
-            inventory.InventoryItemTypeFk = inventoryParam.InventoryItemTypeFk;
+            //inventory.InventoryItemFk = inventoryParam.InventoryItemFk;
+            //inventory.InventoryItemTypeFk = inventoryParam.InventoryItemTypeFk;
             inventory.IsActive = inventoryParam.IsActive;
             inventory.MinimumStockLevel = inventoryParam.MinimumStockLevel;
             inventory.ReorderQuantity = inventoryParam.ReorderQuantity;

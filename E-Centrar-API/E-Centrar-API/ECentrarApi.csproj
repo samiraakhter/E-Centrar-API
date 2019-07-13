@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <Compile Remove="Migrations\20190621185032_AddRoute.cs" />
+    <Compile Remove="Migrations\20190621185032_AddRoute.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\images\ProductImage\" />
   </ItemGroup>
 

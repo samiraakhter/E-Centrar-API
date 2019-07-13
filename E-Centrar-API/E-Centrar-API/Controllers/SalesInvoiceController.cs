@@ -65,7 +65,7 @@ namespace SunSD.Controllers
 
             //productType.CreatedBy = User.Identity.Name;
             var salesEntity = _salesinvoiceService.Create(sales);
-            var saleinvoice = _mapper.Map<PurchaseOrderDTO>(salesEntity);
+            //var saleinvoice = _mapper.Map<PurchaseOrderDTO>(salesEntity);
 
 
             return Ok(sales);

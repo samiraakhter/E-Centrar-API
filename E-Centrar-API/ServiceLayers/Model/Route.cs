@@ -11,8 +11,8 @@ namespace ServiceLayer.Model
     {
         public int Id { get; set; }
         public string RouteName{ get; set; }
-        public float Latitude { get; set; }
-        public float Longitude { get; set; }
+        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}",
+        //ApplyFormatInEditMode = true)]
         public DateTime DateOfVisit { get; set; }
         public bool isRepeatable { get; set; }
         public string CreatedBy { get; set; }
@@ -24,7 +24,7 @@ namespace ServiceLayer.Model
         public int SalesPerson { get; set; }
 
         [ForeignKey("SalesPerson")]
-        public virtual SalesPerson GetSalesPerson { get; set; }
+        public virtual User GetSalesPerson { get; set; }
 
     }
 }

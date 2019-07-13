@@ -73,8 +73,6 @@ namespace ServiceLayer.Services
             route.UpdatedBy = "Admin";
             route.UpdatedDate = DateTime.Now;
             route.RouteName = routeParam.RouteName;
-            route.Latitude = routeParam.Latitude;
-            route.Longitude = routeParam.Longitude;
             route.DateOfVisit = routeParam.DateOfVisit;
             route.isRepeatable = routeParam.isRepeatable;
             route.isActive = routeParam.isActive;

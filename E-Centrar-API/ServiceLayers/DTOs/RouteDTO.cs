@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace ServiceLayer.DTOs
@@ -8,8 +9,8 @@ namespace ServiceLayer.DTOs
     {
         public int Id { get; set; }
         public string RouteName { get; set; }
-        public float Latitude { get; set; }
-        public float Longitude { get; set; }
+        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}",
+        //ApplyFormatInEditMode = true)]
         public DateTime DateOfVisit { get; set; }
         public bool isRepeatable { get; set; }
         public string CreatedBy { get; set; }

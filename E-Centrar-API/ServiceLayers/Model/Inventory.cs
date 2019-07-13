@@ -9,7 +9,7 @@ namespace ServiceLayers.Model
     {
         public int Id { get; set; }
         public double Amount { get; set; }
-        public int Unit { get; set; }
+        public string Unit { get; set; }
         public int MinimumStockLevel { get; set; }
         public int ReorderQuantity { get; set; }
         public string DefaultLocation { get; set; }
@@ -19,17 +19,17 @@ namespace ServiceLayers.Model
         public DateTime? UpdatedDate { get; set; }
         public string UpdatedBy { get; set; }
 
-        [Display(Name = "Inventory Item")]
-        public int InventoryItemFk { get; set; }
+        [Display(Name = "Product")]
+        public int ProductFk { get; set; }
 
-        [ForeignKey("InventoryItemFk")]
-        public virtual InventoryItem InventoryItem { get; set; }
+        [ForeignKey("ProductFk")]
+        public virtual Product Product { get; set; }
 
-        [Display(Name = "Inventory Item Type")]
-        public int InventoryItemTypeFk { get; set; }
+        //[Display(Name = "Inventory Item Type")]
+        //public int InventoryItemTypeFk { get; set; }
 
-        [ForeignKey("InventoryItemTypeFk")]
-        public virtual InventoryItemType InventoryItemType { get; set; }
+        //[ForeignKey("InventoryItemTypeFk")]
+        //public virtual InventoryItemType InventoryItemType { get; set; }
 
 
         //public int? InventoryItemFk { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServiceLayer.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -23,6 +24,12 @@ namespace ServiceLayers.Model
         [ForeignKey("FK_SalesManager")]
         public virtual User User { get; set; }
 
+        [Display(Name = "Route")]
+        public int FK_RouteId { get; set; }
+
+        [ForeignKey("FK_RouteId")]
+        public virtual Route Route { get; set; }
+
         // public int? FkSalesManager { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -31,6 +38,8 @@ namespace ServiceLayers.Model
         public string Address { get; set; }
         public string PhoneNo { get; set; }
         public string MobileNo { get; set; }
+        public float Latitude { get; set; }
+        public float Longitude { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
         public bool IsActive { get; set; }

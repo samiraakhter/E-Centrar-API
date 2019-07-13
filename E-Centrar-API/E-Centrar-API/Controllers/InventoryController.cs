@@ -9,28 +9,43 @@ using ServiceLayers.DTOs;
 using ServiceLayers.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Kendo.Mvc.UI;
+using Microsoft.EntityFrameworkCore;
+using Kendo.Mvc.Extensions;
 
 namespace ECentrarApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class InventoryController : ControllerBase
+    public class InventoryController : Controller
     {
         private IInventoryService _inventoryService;
         private readonly IMapper _mapper;
+        private ApplicationDbContext _db;
 
-        public InventoryController(IInventoryService inventoryService, IMapper mapper)
+
+        public InventoryController(IInventoryService inventoryService, IMapper mapper, ApplicationDbContext db)
         {
             _inventoryService = inventoryService;
             _mapper = mapper;
+            _db = db;
         }
 
         //GetAll
-        [HttpGet]
+        [HttpGet("GetAll")]
         public IActionResult Get()
         {
             var inventory = _inventoryService.GetAll();
             return Ok(inventory);
+        }
+
+        [HttpGet]
+        [Produces("application/json")]
+        public JsonResult Get([DataSourceRequest]DataSourceRequest request)
+        {
+
+            var inventories = _db.Inventory.Include(m => m.Product).ToList();
+            return Json(inventories.ToDataSourceResult(request));
         }
 
         //POST Create Action Method
@@ -41,8 +56,9 @@ namespace ECentrarApi.Controllers
             Inventory inventory = new Inventory();
             inventory.Amount = inventoryDTO.Amount;
             inventory.DefaultLocation = inventoryDTO.DefaultLocation;
-            inventory.InventoryItemFk = inventoryDTO.InventoryItemFk;
-            inventory.InventoryItemTypeFk = inventoryDTO.InventoryItemTypeFk;
+            inventory.ProductFk = inventoryDTO.ProductFk;
+            //inventory.InventoryItemFk = inventoryDTO.InventoryItemFk;
+            //inventory.InventoryItemTypeFk = inventoryDTO.InventoryItemTypeFk;
             inventory.IsActive = inventoryDTO.IsActive;
             inventory.MinimumStockLevel = inventoryDTO.MinimumStockLevel;
             inventory.ReorderQuantity = inventoryDTO.ReorderQuantity;
@@ -80,7 +96,7 @@ namespace ECentrarApi.Controllers
         }
 
         //GET Delete Action method
-        [HttpGet("Delete")]
+        [HttpDelete("Delete")]
         public void Delete(int id)
         {
             _inventoryService.Delete(id);

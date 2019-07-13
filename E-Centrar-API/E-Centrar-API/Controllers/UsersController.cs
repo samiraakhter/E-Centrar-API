@@ -67,7 +67,7 @@ namespace ECentrarApi.Controllers
             return Ok(count);
         }
 
-        [HttpGet("GetSalesman")]
+        [HttpGet("GetSalesManager")]
         public IActionResult GetSalesManager()
         {
             var user = User.Identity.Name;
@@ -76,12 +76,21 @@ namespace ECentrarApi.Controllers
             return Ok(users);
         }
 
+        [HttpGet("GetSalesman")]
+        public IActionResult GetSalesman()
+        {
+            var user = User.Identity.Name;
+
+            var users = _userService.GetSalesMan();
+            return Ok(users);
+        }
         [AllowAnonymous]
         [HttpPost("Create")]
         public IActionResult Create([FromBody]UserDTO userParam)
         {
 
-            if (_context.User.Count() == 0 || User.Identity.IsAuthenticated)
+
+            if (_context.User.Count() == 0 || userParam.Token != null)
             {
                 User user = new User();
                 user.FirstName = userParam.FirstName;

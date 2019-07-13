@@ -34,7 +34,7 @@ namespace ServiceLayers.Model
         
         public bool OnHand { get; set; }
         public bool Fullfilled { get; set; }
-        public bool Instock { get; set; }
+        public int Instock { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
         public bool IsActive { get; set; }

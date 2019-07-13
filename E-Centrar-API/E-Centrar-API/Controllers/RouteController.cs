@@ -1,46 +1,80 @@
 ﻿using System;
+using Kendo.Mvc.UI;
+using Kendo.Mvc.Extensions;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ServiceLayers.Model;
+using ServiceLayers;
+using System.Linq;
+using ServiceLayer.Services;
 using ServiceLayer.DTOs;
 using ServiceLayer.Model;
-using ServiceLayer.Services;
-using ServiceLayers;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECentrarApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RouteController : ControllerBase
+    public class RouteController : Controller
     {
         private IRouteService _routeService;
-            private readonly IMapper _mapper;
+        private readonly IMapper _mapper;
+        private ApplicationDbContext _db;
 
-            public RouteController(IRouteService routeservice, IMapper mapper)
+        public RouteController(IRouteService routeservice, IMapper mapper, ApplicationDbContext db)
             {
                 _routeService = routeservice;
                 _mapper = mapper;
-            }
+                _db = db;
+        }
 
-            [HttpGet]
+        //GetAll
+            [HttpGet("GetAll")]
             public IActionResult Get()
             {
                 var routes = _routeService.GetAll();
                 return Ok(routes);
             }
 
-            //POST Create Action Method
-            [HttpPost("Create")]
+        [HttpGet]
+        [Produces("application/json")]
+        public JsonResult Get([DataSourceRequest]DataSourceRequest request)
+        {
+            try
+            {
+                var routes = _db.Route.Include(m => m.GetSalesPerson).ToList();
+                return Json(routes.ToDataSourceResult(request));
+
+            }
+            catch (Exception ex)
+            {
+
+                Logger.Fatal(ex.Message);
+                Logger.Fatal(ex.Source);
+                Logger.Fatal(ex.StackTrace);
+                if (ex.InnerException != null)
+                {
+                    Logger.Fatal(ex.InnerException.Message);
+                    Logger.Fatal(ex.InnerException.Source);
+                    Logger.Fatal(ex.InnerException.StackTrace);
+                }
+                return Json(new { message = ex.Message });
+            }
+
+            
+        }
+
+        //POST Create Action Method
+        [HttpPost("Create")]
             public IActionResult Create([FromBody]RouteDTO routeDTO)
             {
             try
             {
                 Route route = new Route();
                 route.RouteName = routeDTO.RouteName;
-                route.Latitude = routeDTO.Latitude;
-                route.Longitude = routeDTO.Longitude;
-                route.DateOfVisit = route.DateOfVisit;
-                route.isActive = route.isActive;
+                route.DateOfVisit = routeDTO.DateOfVisit;
+                route.isActive = routeDTO.isActive;
                 route.isRepeatable = routeDTO.isRepeatable;
                 route.SalesPerson = routeDTO.SalesPerson;
 
@@ -95,9 +129,9 @@ namespace ECentrarApi.Controllers
                 return Ok(route);
             }
 
-            //GET Delete Action method
-            [HttpGet("Delete")]
-            public void Delete(int id)
+        //GET Delete Action method
+        [HttpDelete("Delete")]
+        public void Delete(int id)
             {
                 _routeService.Delete(id);
             }

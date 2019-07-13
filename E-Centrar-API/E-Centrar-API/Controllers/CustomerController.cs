@@ -34,10 +34,11 @@ namespace ECentrarApi.Controllers
 
         //POST Create Action Method
         [HttpPost("Create")]
-        [Authorize]
-        public IActionResult Create([FromBody] CustomerDTO customerDTO)
+        
+        public IActionResult Create([FromBody]CustomerDTO customerDTO)
         {
             Customer customer = new Customer();
+            customer.CustomerId = new Guid();
             customer.FirstName = customerDTO.FirstName;
             customer.LastName = customerDTO.LastName;
             customer.MobileNo = customerDTO.MobileNo;
@@ -46,7 +47,10 @@ namespace ECentrarApi.Controllers
             customer.FK_SalesManager = customerDTO.FK_SalesManager;
             customer.Email = customerDTO.Email;
             customer.EnterpriseName = customerDTO.EnterpriseName;
-            
+            customer.Longitude = customerDTO.Longitude;
+            customer.Latitude = customerDTO.Latitude;
+            customer.FK_RouteId = customerDTO.FK_RouteId;
+
 
             //productType.CreatedBy = User.Identity.Name;
             var customerEntity = _customerService.Create(customer);
