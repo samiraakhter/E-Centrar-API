@@ -88,5 +88,39 @@ namespace ServiceLayers.Services
             return inventory;
         }
 
+        //public Inventory UpdateStock(Product productParam)
+        //{
+        //    var product = _db.Product.Find(productParam.Id);
+        //    if (inventory == null)
+        //        throw new Exception("Product not found");
+
+        //    if (productParam.Amount != inventory.Amount)
+        //    {
+        //        // type has changed so check if the new type is already taken
+        //        if (_db.Inventory.Any(x => x.Amount == productParam.Amount))
+        //            throw new Exception(productParam.Amount + " is already taken");
+        //    }
+
+        //    //productTypes.UpdatedBy = User.Identity.Name;
+        //    inventory.UpdatedBy = "Admin";
+        //    inventory.UpdatedDate = DateTime.Now;
+
+        //    inventory.Amount = productParam.Amount;
+        //    inventory.ProductFk = productParam.ProductFk;
+        //    // inventory.Product = inventoryParam.Product;
+        //    inventory.DefaultLocation = productParam.DefaultLocation;
+        //    //inventory.InventoryItemFk = inventoryParam.InventoryItemFk;
+        //    //inventory.InventoryItemTypeFk = inventoryParam.InventoryItemTypeFk;
+        //    inventory.IsActive = productParam.IsActive;
+        //    inventory.MinimumStockLevel = productParam.MinimumStockLevel;
+        //    inventory.ReorderQuantity = productParam.ReorderQuantity;
+        //    inventory.Unit = productParam.Unit;
+
+        //    _db.Inventory.Update(inventory);
+        //    _db.SaveChanges();
+
+        //    return inventory;
+        //}
+
     }
 }

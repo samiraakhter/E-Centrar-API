@@ -38,8 +38,8 @@ namespace ServiceLayers.Model
         public string Address { get; set; }
         public string PhoneNo { get; set; }
         public string MobileNo { get; set; }
-        public float Latitude { get; set; }
-        public float Longitude { get; set; }
+        public decimal Latitude { get; set; }
+        public decimal Longitude { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
         public bool IsActive { get; set; }

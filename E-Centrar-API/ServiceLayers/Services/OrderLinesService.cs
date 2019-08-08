@@ -4,7 +4,7 @@ using System.Text;
 using ServiceLayers.Model;
 using ServiceLayers.Model.ViewModel;
 using System.Linq;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace ServiceLayers.Services
 {
@@ -15,6 +15,7 @@ namespace ServiceLayers.Services
         OrderLines Create(OrderLines orderlines);
         OrderLines Update(OrderLines orderlines);
         void Delete(int id);
+        IEnumerable<OrderLines> GetOrders(int orderId);
     }
 
     public class OrderLinesService: IOrderLineService
@@ -34,6 +35,12 @@ namespace ServiceLayers.Services
         public OrderLines GetById(int id)
         {
             return _db.OrderLines.Find(id);
+        }
+
+        public IEnumerable<OrderLines> GetOrders(int orderId)
+        {
+            var lines = _db.OrderLines.Where(r => r.OrderIdFk == orderId).Include(m => m.Product).ToList(); 
+            return lines;
         }
         public OrderLines Create(OrderLines orderlines)
         {
@@ -74,7 +81,7 @@ namespace ServiceLayers.Services
             orderline.Price = orderlinesParam.Price;
             orderline.OrderIdFk = orderlinesParam.OrderIdFk;
             orderline.Quantity = orderlinesParam.Quantity;
-            orderline.Sku = orderlinesParam.Sku;
+            orderline.ProductIdFk = orderlinesParam.ProductIdFk;
             orderline.TotalPrice = orderlinesParam.TotalPrice;
             orderline.IsActive = orderlinesParam.IsActive;
 

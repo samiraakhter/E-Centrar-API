@@ -74,7 +74,6 @@ namespace ServiceLayers.Services
             order.IsActive = orderParam.IsActive;
             order.IsConfirmed = orderParam.IsConfirmed;
             order.OrderDate = orderParam.OrderDate;
-            order.ProductIdFk = orderParam.ProductIdFk;
             order.IsActive = orderParam.IsActive;
 
 

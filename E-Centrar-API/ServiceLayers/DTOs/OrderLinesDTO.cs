@@ -8,7 +8,7 @@ namespace ServiceLayers.DTOs
     {
         public int Id { get; set; }
         public int OrderIdFk { get; set; }
-        public string Sku { get; set; }
+        public int ProductIdFk { get; set; }
         public int Quantity { get; set; }
         public double Price { get; set; }
         public double TotalPrice { get; set; }

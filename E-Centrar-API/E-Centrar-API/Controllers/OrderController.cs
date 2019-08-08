@@ -9,30 +9,45 @@ using ServiceLayers.Model;
 using ServiceLayers.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Kendo.Mvc.UI;
+using Microsoft.EntityFrameworkCore;
+using Kendo.Mvc.Extensions;
 
 namespace SunSD.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OrderController : ControllerBase
+    public class OrderController : Controller
     {
         private IOrderService _orderService;
         private readonly IMapper _mapper;
+        private ApplicationDbContext _db;
 
-        public OrderController(IOrderService orderService, IMapper mapper) //mappers p h error? henana yaha to nh hai h
+
+        public OrderController(IOrderService orderService, IMapper mapper, ApplicationDbContext db) //mappers p h error? henana yaha to nh hai h
         {
             _orderService = orderService;
             _mapper = mapper;
+            _db = db;
         }
 
         //GetAll
-        [HttpGet]
+        [HttpGet("GetAll")]
         public IActionResult Get()
         {
             var order = _orderService.GetAll();
             return Ok(order);
         }
+        
 
+        [HttpGet]
+        [Produces("application/json")]
+        public JsonResult Get([DataSourceRequest]DataSourceRequest request)
+        {
+
+            var inventories = _db.Order.Include(m => m.Customer).ToList();
+            return Json(inventories.ToDataSourceResult(request));
+        }
         //POST Create Action Method
         [HttpPost("Create")]
         [AllowAnonymous]
@@ -43,7 +58,6 @@ namespace SunSD.Controllers
             order.IsActive = orderDTO.IsActive;
             order.IsConfirmed = orderDTO.IsConfirmed;
             order.OrderDate = orderDTO.OrderDate;
-            order.ProductIdFk = orderDTO.ProductIdFk;
             
 
             var orderEntity = _orderService.Create(order);

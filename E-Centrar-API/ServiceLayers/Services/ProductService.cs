@@ -19,6 +19,7 @@ namespace ServiceLayers.Services
         Product GetById(int id);
         Product Create(Product product);
         Product Update(Product product);
+        Product UpdateStock(Product productParam);
         void Delete(int id);
     }
     public class ProductService : IProductService
@@ -91,6 +92,47 @@ namespace ServiceLayers.Services
             product.ProductImage = productParam.ProductImage;
             product.ProductTypeIdFk = productParam.ProductTypeIdFk;
             product.Sku = productParam.Sku;
+
+
+            _db.Product.Update(product);
+            _db.SaveChanges();
+
+            return product;
+        }
+        public Product UpdateQuantity(int productId, int quantity)
+        {
+            var product = _db.Product.Find(productId);
+            if (product == null)
+                throw new Exception("Product not found");
+
+             product.Instock = product.Instock - quantity;
+
+
+
+            _db.Product.Update(product);
+            _db.SaveChanges();
+
+            return product;
+        }
+
+        public Product UpdateStock(Product productParam)
+        {
+            var product = _db.Product.Find(productParam.Id);
+            if (product == null)
+                throw new Exception("Product not found");
+
+            if (productParam.ProductName != product.ProductName)
+            {
+                // type has changed so check if the new type is already taken
+                if (_db.Product.Any(x => x.ProductName == productParam.ProductName))
+                    throw new Exception(productParam.ProductName + " is already taken");
+            }
+
+            //productTypes.UpdatedBy = User.Identity.Name;
+            product.UpdatedBy = "Admin";
+            product.UpdatedDate = DateTime.Now;
+            product.ProductName = productParam.ProductName;
+            product.Instock = productParam.Instock + 75;
 
 
             _db.Product.Update(product);

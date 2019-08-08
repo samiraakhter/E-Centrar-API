@@ -58,6 +58,8 @@ namespace ECentrarApi.Controllers
             return Ok(users);
         }
 
+        
+
         [AllowAnonymous]
         [HttpGet("GetCount")]
         public IActionResult GetCount()

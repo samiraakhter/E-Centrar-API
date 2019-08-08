@@ -10,7 +10,6 @@ namespace ServiceLayers.Model
         public int Id { get; set; }
 
         //public int OrderIdFk { get; set; }
-        public string Sku { get; set; }
         public int Quantity { get; set; }
         public double Price { get; set; }
         public double TotalPrice { get; set; }
@@ -25,6 +24,12 @@ namespace ServiceLayers.Model
 
         [ForeignKey("OrderIdFk")]
         public virtual Order Order { get; set; }
+
+        [Display(Name = "Product")]
+        public int ProductIdFk { get; set; }
+
+        [ForeignKey("ProductIdFk")]
+        public virtual Product Product { get; set; }
 
         // public Order OrderIdFkNavigation { get; set; }
     }

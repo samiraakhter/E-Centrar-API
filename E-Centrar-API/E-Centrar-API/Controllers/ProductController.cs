@@ -53,6 +53,14 @@ namespace SunSD.Controllers
             var products = _db.Product.Include(m => m.ProductCategory).Include(m => m.ProductType).ToList();
             return Json(products.ToDataSourceResult(request));
         }
+        [HttpGet("Users")]
+        [Produces("application/json")]
+        public JsonResult GetUser([DataSourceRequest]DataSourceRequest request)
+        {
+
+            var users = _db.User.Include(m => m.Role).ToList();
+            return Json(users.ToDataSourceResult(request));
+        }
 
         //POST Action Method for picture
         [HttpPost("Temp")]
@@ -156,6 +164,24 @@ namespace SunSD.Controllers
                 return NotFound();
             }
             return Ok(product);
+        }
+
+        //POST UPDATE Action Method
+        [HttpPost("UpdateStock")]
+        [AllowAnonymous]
+        public IActionResult UpdateStock(int id, int Instocks)
+        {
+            var product = _productService.GetById(id);
+            product.Instock = Instocks;
+            if (ModelState.IsValid)
+            {
+              //  products.Id = id;
+                //productTypes.UpdatedBy = User.Identity.Name;
+               
+                var ProductEntity = _productService.UpdateStock(product);
+                return Ok();
+            }
+            return BadRequest();
         }
 
         //GET Delete Action method

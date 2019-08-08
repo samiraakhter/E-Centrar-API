@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ServiceLayers.DTOs;
 using ServiceLayers.Model;
 using ServiceLayers.Services;
@@ -14,22 +17,33 @@ namespace ECentrarApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomerController : ControllerBase
+    public class CustomerController : Controller
     {
         private ICustomerService _customerService;
         private readonly IMapper _mapper;
+        private ApplicationDbContext _db;
 
-        public CustomerController(ICustomerService customerService, IMapper mapper)
+        public CustomerController(ICustomerService customerService, IMapper mapper, ApplicationDbContext db)
         {
             _customerService = customerService;
             _mapper = mapper;
+            _db = db;
         }
 
-        [HttpGet]
+        [HttpGet("GetAll")]
         public IActionResult Get()
         {
             var customer = _customerService.GetAll();
             return Ok(customer);
+        }
+
+        [HttpGet]
+        [Produces("application/json")]
+        public JsonResult Get([DataSourceRequest]DataSourceRequest request)
+        {
+
+            var customers = _db.Customer.Include(m => m.Route).Include(m => m.User).ToList();
+            return Json(customers.ToDataSourceResult(request));
         }
 
         //POST Create Action Method
@@ -41,9 +55,11 @@ namespace ECentrarApi.Controllers
             customer.CustomerId = new Guid();
             customer.FirstName = customerDTO.FirstName;
             customer.LastName = customerDTO.LastName;
+            customer.Address = customerDTO.Address;
             customer.MobileNo = customerDTO.MobileNo;
             customer.PaymentMethod = customerDTO.PaymentMethod;
             customer.PhoneNo = customerDTO.PhoneNo;
+            customer.IsActive = customerDTO.IsActive;
             customer.FK_SalesManager = customerDTO.FK_SalesManager;
             customer.Email = customerDTO.Email;
             customer.EnterpriseName = customerDTO.EnterpriseName;

@@ -25,11 +25,11 @@ namespace ServiceLayers.Model
      
         public bool IsConfirmed { get; set; }
 
-        [Display(Name = "Product")]
-        public int ProductIdFk { get; set; }
+        //[Display(Name = "Product")]
+        //public int ProductIdFk { get; set; }
 
-        [ForeignKey("ProductIdFk")]
-        public virtual Product Product { get; set; }
+        //[ForeignKey("ProductIdFk")]
+        //public virtual Product Product { get; set; }
 
         //[Display(Name = "SalesOrder")]
         //public int SalesOrderIdFk { get; set; }

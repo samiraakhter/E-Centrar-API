@@ -9,24 +9,38 @@ using ServiceLayers.Model;
 using ServiceLayers.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Kendo.Mvc.UI;
+using Microsoft.EntityFrameworkCore;
+using Kendo.Mvc.Extensions;
 
 namespace ECentrarApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OrderLinesController : ControllerBase
+    public class OrderLinesController : Controller
     {
         private IOrderLineService _orderlineService;
         private readonly IMapper _mapper;
+        private ApplicationDbContext _db;
 
-        public OrderLinesController(IOrderLineService orderlineService, IMapper mapper)
+        public OrderLinesController(IOrderLineService orderlineService, IMapper mapper, ApplicationDbContext db)
         {
             _orderlineService = orderlineService;
             _mapper = mapper;
+            _db = db;
+        }
+
+        [HttpGet]
+        [Produces("application/json")]
+        public JsonResult Get([DataSourceRequest]DataSourceRequest request)
+        {
+
+            var inventories = _db.OrderLines.Include(m => m.Order).Include(m => m.Product).ToList();
+            return Json(inventories.ToDataSourceResult(request));
         }
 
         //GetAll
-        [HttpGet]
+        [HttpGet("GetAll")]
         public IActionResult Get()
         {
             var orderline = _orderlineService.GetAll();
@@ -42,7 +56,7 @@ namespace ECentrarApi.Controllers
             orderline.Price= orderlineDTO.Price;
             orderline.OrderIdFk = orderlineDTO.OrderIdFk;
             orderline.Quantity = orderlineDTO.Quantity;
-            orderline.Sku = orderlineDTO.Sku;
+            orderline.ProductIdFk = orderlineDTO.ProductIdFk;
             orderline.TotalPrice = orderlineDTO.TotalPrice;
            
             var orderlineEntity = _orderlineService.Create(orderline);
@@ -75,6 +89,14 @@ namespace ECentrarApi.Controllers
                 return NotFound();
             }
             return Ok(orderline);
+        }
+        //orderlines of particular order
+        [HttpGet("GetOrder")]
+        [Produces("application/json")]
+        public JsonResult GetOrder(int id, [DataSourceRequest]DataSourceRequest request)
+        {
+            var orderline = _orderlineService.GetOrders(id);
+            return Json(orderline.ToDataSourceResult(request));
         }
 
         //GET Delete Action method
